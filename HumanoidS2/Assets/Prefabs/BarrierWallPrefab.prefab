@@ -47,15 +47,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 188401275749995042}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33234db0fdcde7a4793841a4006b3fb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   barrierHealth: 1000
   barrierBaseHealth: 1000
-  barriers: {fileID: 4697686106637182880, guid: 6eef0f93662975944a7198e41e365730, type: 3}
-  healthbar: {fileID: 4328523143416774945}
+  barriers: {fileID: 0}
+  healthbar: {fileID: 0}
   healthCanvas: {fileID: 9066522558302612063}
   showBarrierHealthTimer: 0
   showBarrierHealthTimerLimit: 2
