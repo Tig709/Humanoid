@@ -11,7 +11,7 @@ public class BarrierHealth : MonoBehaviour
     GameObject barriers;
 
     [SerializeField]
-    HealthBar healthbar;
+    BarrierHealthBar healthbar;
 
     [SerializeField]
     Canvas healthCanvas;
