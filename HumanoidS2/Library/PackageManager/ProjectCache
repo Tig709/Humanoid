@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638028421509359660
-    m_Hash: 1557606043
+      ticks: 638029056713507557
+    m_Hash: 1275613552
   m_LockFileStatus:
     m_FilePath: C:/Users/tigos/source/repos/HumanoidS2/HumanoidS2/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638028421509414190
-    m_Hash: 3532029182
+      ticks: 638029056713517735
+    m_Hash: 1266272060
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
