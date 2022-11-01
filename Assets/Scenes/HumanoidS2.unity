@@ -230,6 +230,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bad64fdecd843f4c97196297a359884, type: 3}
+--- !u!1001 &168202796
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 26791408709834945, guid: 3f613e272aeefa24eb43a40a7aa7bf3d, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 26791408709834945, guid: 3f613e272aeefa24eb43a40a7aa7bf3d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 26791408709834945, guid: 3f613e272aeefa24eb43a40a7aa7bf3d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 26791408709834945, guid: 3f613e272aeefa24eb43a40a7aa7bf3d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 26791408709834945, guid: 3f613e272aeefa24eb43a40a7aa7bf3d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 26791408709834945, guid: 3f613e272aeefa24eb43a40a7aa7bf3d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 26791408709834945, guid: 3f613e272aeefa24eb43a40a7aa7bf3d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 26791408709834945, guid: 3f613e272aeefa24eb43a40a7aa7bf3d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 26791408709834945, guid: 3f613e272aeefa24eb43a40a7aa7bf3d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 26791408709834945, guid: 3f613e272aeefa24eb43a40a7aa7bf3d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 26791408709834945, guid: 3f613e272aeefa24eb43a40a7aa7bf3d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 26791408709835005, guid: 3f613e272aeefa24eb43a40a7aa7bf3d, type: 3}
+      propertyPath: m_Name
+      value: Ground
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3f613e272aeefa24eb43a40a7aa7bf3d, type: 3}
 --- !u!4 &470536983 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 882994731790444380, guid: 0fdabf3cdd184ba45a6e9c2d2c9e2448, type: 3}
@@ -351,11 +408,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8686367307236274468, guid: 40efff8faafe3dc468dacb2067ace588, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000017091047
+      value: -0.00000001709104
       objectReference: {fileID: 0}
     - target: {fileID: 8686367307236274468, guid: 40efff8faafe3dc468dacb2067ace588, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000019889261
+      value: 0.0000000019889252
       objectReference: {fileID: 0}
     - target: {fileID: 8686367307903075220, guid: 40efff8faafe3dc468dacb2067ace588, type: 3}
       propertyPath: m_LocalPosition.x
@@ -371,11 +428,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8686367307903075220, guid: 40efff8faafe3dc468dacb2067ace588, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000003418209
+      value: -0.000000034182086
       objectReference: {fileID: 0}
     - target: {fileID: 8686367307903075220, guid: 40efff8faafe3dc468dacb2067ace588, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000003977852
+      value: 0.0000000039778514
       objectReference: {fileID: 0}
     - target: {fileID: 8686367307903075221, guid: 40efff8faafe3dc468dacb2067ace588, type: 3}
       propertyPath: rb
