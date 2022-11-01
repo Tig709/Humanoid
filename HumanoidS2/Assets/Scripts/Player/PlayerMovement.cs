@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
     {
         for (int i = 0; i < Gamepad.all.Count; i++) { UnityEngine.Debug.Log(Gamepad.all[i].name); }
         rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
+       // rb.freezeRotation = true;
     }
 
     private void Update()
@@ -93,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         // Rotate camera up-down and controller left-right from velocity.
-        transform.localRotation = Quaternion.AngleAxis(-velocity.y, Vector3.right);
+        //transform.localRotation = Quaternion.AngleAxis(-velocity.y, Vector3.right);
 
 
         
