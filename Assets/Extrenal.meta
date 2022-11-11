@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Extrenal.meta
 guid: 1e2bd482121b4254c8ebdbc1882f3096
+========
+guid: 586b9ca571c96b045a76c34a2807da50
+>>>>>>>> 5985a73093ede2c7bd8b134674110957f8715f77:Assets/Packages.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
