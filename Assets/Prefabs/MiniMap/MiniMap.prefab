@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 2907313282044578458}
   - component: {fileID: 2907313282044578456}
   - component: {fileID: 2907313282044578457}
+  - component: {fileID: 173541270587055123}
   m_Layer: 5
   m_Name: MiniMap
   m_TagString: Untagged
@@ -106,6 +107,18 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &173541270587055123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2907313282044578459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e2231bfe9a42e3459b2d4683c9318fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2907313282228326831
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,7 +130,6 @@ GameObject:
   - component: {fileID: 2907313282228326830}
   - component: {fileID: 2907313282228326828}
   - component: {fileID: 2907313282228326829}
-  - component: {fileID: 2907313282228326827}
   m_Layer: 5
   m_Name: MiniMapBorder
   m_TagString: Untagged
@@ -181,18 +193,6 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!114 &2907313282228326827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2907313282228326831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e891798c684d82c419313156cf94f34e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2907313282503940968
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 2907313282503940967}
   - component: {fileID: 2907313282503940964}
   - component: {fileID: 2907313282503940965}
-  - component: {fileID: 2907313282503940966}
+  - component: {fileID: 4110237266667722359}
   m_Layer: 0
   m_Name: MiniMapCamera
   m_TagString: Untagged
@@ -278,7 +278,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2907313282503940968}
   m_Enabled: 0
---- !u!114 &2907313282503940966
+--- !u!114 &4110237266667722359
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -287,7 +287,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2907313282503940968}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92c0df58da6a9cf4f924338da17096a1, type: 3}
+  m_Script: {fileID: 11500000, guid: a689eacd20f85424aa8c6d9e6b9baa2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_OrthographicCamera: {fileID: 2907313282503940964}

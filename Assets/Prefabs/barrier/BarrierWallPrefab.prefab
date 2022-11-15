@@ -49,7 +49,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 188401275749995042}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33234db0fdcde7a4793841a4006b3fb4, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c8888c03b25fbc479970d93cacbfb5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   barrierHealth: 1000
@@ -559,43 +559,17 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 81323681446594840, guid: 0a950e023b0415e4580462c85ba3024f, type: 3}
+    - target: {fileID: 8840253353412756875, guid: 0a950e023b0415e4580462c85ba3024f, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a950e023b0415e4580462c85ba3024f, type: 3}
 --- !u!224 &1218695476395468627 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4911939221696817033, guid: 0a950e023b0415e4580462c85ba3024f, type: 3}
   m_PrefabInstance: {fileID: 6107755922583535834}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1814067784712804189 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5615925716587124615, guid: 0a950e023b0415e4580462c85ba3024f, type: 3}
-  m_PrefabInstance: {fileID: 6107755922583535834}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4328523143416774945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1814067784712804189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e0fa0e513358145bc2d4810f93b71f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 2480409511562016736}
---- !u!114 &2480409511562016736 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8552112395521505082, guid: 0a950e023b0415e4580462c85ba3024f, type: 3}
-  m_PrefabInstance: {fileID: 6107755922583535834}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1814067784712804189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!223 &9066522558302612063 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 2959385695536294533, guid: 0a950e023b0415e4580462c85ba3024f, type: 3}
