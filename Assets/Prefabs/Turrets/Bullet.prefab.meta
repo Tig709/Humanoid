@@ -1,9 +1,7 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Prefabs/Turrets/Bullet.prefab.meta
-guid: 2b9c3e26b0753694f8ecb98e40684c39
-========
-guid: 0fdabf3cdd184ba45a6e9c2d2c9e2448
->>>>>>>> 5985a73093ede2c7bd8b134674110957f8715f77:Assets/Prefabs/Player/Player.prefab.meta
+
+guid: b254c86dc48787242a85e52a89ef2c07
+
 PrefabImporter:
   externalObjects: {}
   userData: 
