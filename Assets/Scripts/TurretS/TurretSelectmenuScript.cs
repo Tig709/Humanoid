@@ -16,6 +16,8 @@ public class TurretSelectmenuScript : MonoBehaviour
     [SerializeField]
     float positionXOffset = 489.3334f, positionYOffset = 267.6667f;
 
+    Color Full, Half;
+
 
     private void Start()
     {
@@ -23,6 +25,10 @@ public class TurretSelectmenuScript : MonoBehaviour
         turretImagePosArray[0] = new Vector3(-394 + positionXOffset, 172 + positionYOffset, 0);
         turretImagePosArray[1] = new Vector3(-192 + positionXOffset, 172 + positionYOffset, 0);
         turretImagePosArray[2] = new Vector3(102 + positionXOffset, 181 + positionYOffset, 0);
+
+        Full.a = 1.0f;
+        Half.a = 0.5f;
+
     }
 
     private void OpenMenu()
@@ -46,19 +52,46 @@ public class TurretSelectmenuScript : MonoBehaviour
     private void SetSelectedTurret(int turretID)
     {
         selectedTurretID = turretID;
-        selectorImage.transform.position = turretImagePosArray[selectedTurretID];
+
+        switch (turretID)
+        {
+            case 0:
+                manualImage.material.color = Full;
+                autoImage.material.color = Half;
+                barrierImage.material.color = Half;
+                break;
+            case 1:
+                manualImage.material.color = Half;
+                autoImage.material.color = Full;
+                barrierImage.material.color = Half;
+                break;
+            case 2:
+                manualImage.material.color = Half;
+                autoImage.material.color = Half;
+                barrierImage.material.color = Full;
+                break;
+
+            default:
+                manualImage.material.color = Half;
+                autoImage.material.color = Half;
+                barrierImage.material.color = Half;
+                break;
+
+        }
+
+
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && menuOpen)
         {
             SetSelectedTurret(0);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2) && menuOpen)
         {
             SetSelectedTurret(1);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha3) && menuOpen)
         {
             SetSelectedTurret(2);
         }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurretHandler : MonoBehaviour
 {
@@ -11,14 +12,26 @@ public class TurretHandler : MonoBehaviour
     public GameObject BarrierTurret;
     public List<GameObject> TurretList;
 
+    public Canvas TurretSelector;
+    public Image Box0, Box1, Box2;
+    public Sprite ManualSprite, AutoSprite, BarrierSprite;
+
+    public int Spritewheel = 0;
+
+
     private int Range = 2;
+
+    private int CurrentTurret;
+
 
     public enum TurretTypes
     {
         Manual,
         Automatic,
-        Barier
+        Barier,
+
     }
+
 
     private GameObject SelectTurret(TurretTypes type)
     {
@@ -44,6 +57,8 @@ public class TurretHandler : MonoBehaviour
 
     private void Update()
     {
+        updateSelector();
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             foreach (GameObject turret in TurretList)
@@ -70,10 +85,20 @@ public class TurretHandler : MonoBehaviour
 
         }
 
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
+        {
+            Spritewheel++;
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0f) // backwards
+        {
+            Spritewheel--;
+        }
+
+
         if (Input.GetKeyDown(KeyCode.K))
         {
             Vector3 placeposition = new Vector3(Player.transform.position.x, 0, Player.transform.position.z);
-            PlaceTurret(placeposition, TurretHandler.TurretTypes.Manual);
+            PlaceTurret(placeposition, (TurretHandler.TurretTypes)CurrentTurret);
         }
     }
 
@@ -85,4 +110,41 @@ public class TurretHandler : MonoBehaviour
         turret.GetComponent<TurretScript>().UseTurret(!UsePlayer);
 
     }
+
+
+    private void updateSelector()
+    {
+        switch (Spritewheel)
+        {
+            case 0:
+                CurrentTurret = 0;
+                Box0.sprite = ManualSprite;
+                Box1.sprite = AutoSprite;
+                Box2.sprite = BarrierSprite;
+                break;
+            case 1:
+                CurrentTurret = 1;
+                Spritewheel = 1;
+                Box0.sprite = AutoSprite;
+                Box1.sprite = BarrierSprite;
+                Box2.sprite = ManualSprite;
+                break;
+            case -1:
+                CurrentTurret = 2;
+                Spritewheel = -1;
+                Box0.sprite = BarrierSprite;
+                Box1.sprite = ManualSprite;
+                Box2.sprite = AutoSprite;
+                break;
+
+            case < -1:
+                Spritewheel = 1;
+                break;
+            case > 1:
+                Spritewheel = -1;
+                break;
+
+        }
+    }
+
 }

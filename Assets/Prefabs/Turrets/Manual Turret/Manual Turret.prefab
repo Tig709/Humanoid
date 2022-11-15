@@ -378,6 +378,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2021560332280046868}
+  - component: {fileID: 9150331305691802186}
   m_Layer: 0
   m_Name: Manual Turret
   m_TagString: Untagged
@@ -401,6 +402,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9150331305691802186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018666056216673854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 147bc8b0dbc39244e87673f5d2ed9272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cannon: {fileID: 2021560331510457878}
+  Aim: {fileID: 2017669345416573056}
+  BulletPrefab: {fileID: 1074234149718580185, guid: 8d1ef7184401c4d40adcc51a14de7e8b, type: 3}
+  sensitivity: 2
+  smoothing: 1.5
+  canvas: {fileID: 2017669344371506905}
+  Turretcam: {fileID: 2017669344227305163}
+  used: 0
 --- !u!1 &2018666056575887814
 GameObject:
   m_ObjectHideFlags: 0
