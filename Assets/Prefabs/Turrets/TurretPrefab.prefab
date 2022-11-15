@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8680262525411785404}
   - component: {fileID: 5909913306786284254}
   - component: {fileID: 7134294856357479833}
-  - component: {fileID: 7214665516547607090}
+  - component: {fileID: 9053699346157490191}
   m_Layer: 5
   m_Name: HealthBarCanvas
   m_TagString: Untagged
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7214665516547607090
+--- !u!114 &9053699346157490191
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1539610879659727454}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3a6a27394a7e934c832ec3561ee4f68, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cfb9059a5714be4ab684f16c8e9c2a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1918714907802551982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb2989b065bd9194d8158f54c2500f0f, type: 3}
+  m_Script: {fileID: 11500000, guid: bbdde5bff59545e41a8dff90d5b52ba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 5498779568503868915}
@@ -560,11 +560,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5419000311014057209}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca101f614f2d254fa0d441f8a56fd88, type: 3}
+  m_Script: {fileID: 11500000, guid: 80e50a18f7a326841a4790ef13e678d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  bulletPrefab: {fileID: 1074234149718580181, guid: 9bcfa44cf0d8bbc4f823b2ad8d5d885e, type: 3}
+  bulletPrefab: {fileID: 1074234149718580181, guid: 8d1ef7184401c4d40adcc51a14de7e8b, type: 3}
   turretCannon: {fileID: 0}
   maxDistance: 500
   shotCooldown: 2
@@ -577,7 +577,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5420522436853189075}
-  - component: {fileID: 5419982729131184814}
   - component: {fileID: 5251462850934545935}
   m_Layer: 0
   m_Name: TurretPrefab
@@ -602,23 +601,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5419982729131184814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5419000311230585539}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca101f614f2d254fa0d441f8a56fd88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  bulletPrefab: {fileID: 1074234149718580181, guid: 9bcfa44cf0d8bbc4f823b2ad8d5d885e, type: 3}
-  turretCannon: {fileID: 0}
-  maxDistance: 500
-  shotCooldown: 2
 --- !u!114 &5251462850934545935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -628,7 +610,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5419000311230585539}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dc78f9966e47ac429579a6775d4e4e2, type: 3}
+  m_Script: {fileID: 11500000, guid: b9cf7a7996c483b408c155517379abc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   turretHealth: 100

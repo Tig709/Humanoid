@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 29a1027b54632084bbfbabdc7666850d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b5b2b4bc30f9c8e41aefde58d1fa5b9d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1654074256334684494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9245b722a6e1d646b7d2a552f4ee96c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f1a3e0eceb22fc4f8098ab01ae76514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   selectedTurretID: 0
@@ -202,7 +202,7 @@ MonoBehaviour:
   selectorImage: {fileID: 1724100406065109313}
   manualImage: {fileID: 7009185909082112352}
   autoImage: {fileID: 4276182344330623261}
-  barrierImage: {fileID: 3462550781648482027}
+  barrierImage: {fileID: 4276182344330623261}
   positionXOffset: 489.3334
   positionYOffset: 267.6667
 --- !u!1 &2696541311660774574
@@ -271,7 +271,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ee047bd66ed95154bb44edc93ca366a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 56dca0e1a5b03c446979693398a41c89, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -347,7 +347,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1048853770ae6454fbbf922b4a0cf5c4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 326b13e74745a304fb71f9e8fdd59d5f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -423,7 +423,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: aa1db5922fb05714a95a5a38250b4948, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 74bb91074bc0a5142ac016dfe59c23e2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
