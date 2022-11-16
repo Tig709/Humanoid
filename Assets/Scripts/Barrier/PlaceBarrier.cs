@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlaceBarrier : MonoBehaviour
 {
@@ -11,19 +12,45 @@ public class PlaceBarrier : MonoBehaviour
     [SerializeField]
     GameObject barrierWallPrefab;
 
+    private GameObject[] otherBarriers;
     private bool canBuild = true;
+    float distance = Mathf.Infinity;
+    GameObject closest = null;
 
     [SerializeField]
     private Vector3 barrierPosition;
+    private Vector3[] barrierPositions;
+    
 
     private string whatToPlace = "PlaceFirst";
 
     private void Update()
     {
-        myInput();
+        FindClosestTower();
+        MyInput();
     }
 
-    private void myInput()
+        public GameObject FindClosestTower()
+        {
+
+            otherBarriers = GameObject.FindGameObjectsWithTag("BarrierTower");
+            
+
+            Vector3 position = barrierPosition;
+            foreach (GameObject ob in otherBarriers)
+            {
+                Vector3 diff = ob.transform.position - position;
+                float curDistance = diff.sqrMagnitude;
+                if (curDistance < distance)
+                {
+                    closest = ob;
+                    distance = curDistance;
+                }
+            }
+            return closest;
+        }
+    
+    private void MyInput()
     {
         if (Input.GetKeyDown(KeyCode.F) && canBuild)
         {
@@ -43,37 +70,21 @@ public class PlaceBarrier : MonoBehaviour
         barrierPosition = new Vector3(transform.position.x, barrierPosition.y, transform.position.z);
         //barrierPosition = new Vector3(barrierPosition.x + barrierX1, barrierPosition.y, barrierPosition.z);
         Instantiate(barrierPrefab, barrierPosition, Quaternion.identity);
-        whatToPlace = "PlaceSecond";
-    }
-
-    private void PlaceSecond() 
-    {
-        barrierX2 = 5; //moet gridtile worden
-        barrierPosition = new Vector3(barrierPosition.x + barrierX2, barrierPosition.y, barrierPosition.z);
-        Instantiate(barrierPrefab, barrierPosition, Quaternion.identity);
-        whatToPlace = "SecondDown";
-    }
-
-    private void SecondDown()
-    {
-        PlaceWall();
         whatToPlace = "PlaceFirst";
-        ResetPlacement();
+        if (distance < 20)
+        {
+            PlaceWall(closest.transform.position);
+        }
+
     }
 
-    private void ResetPlacement() 
-    {
-        canBuild = true;
-        barrierPosition.z = barrierPosition.z + 1;
-    }
-
-    private void PlaceWall() {
+    private void PlaceWall(Vector3 closestPos) {
         GameObject[] barrierWall = GameObject.FindGameObjectsWithTag("BarrierTower");
         foreach(GameObject gameObject in barrierWall)
         {
             gameObject.gameObject.SetActive(false);
         }
-        barrierPosition = new Vector3(barrierPosition.x -barrierX2, barrierPosition.y, barrierPosition.z);
-        Instantiate(barrierWallPrefab, barrierPosition, Quaternion.identity);
+        //barrierPosition = new Vector3(barrierPosition.x -barrierX2, barrierPosition.y, barrierPosition.z);
+        Instantiate(barrierWallPrefab, closestPos, Quaternion.identity);
     }
 }
