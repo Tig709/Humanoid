@@ -7,6 +7,9 @@ public class TurretHandler : MonoBehaviour
 {
     public GameObject Player;
 
+    public Camera Camera;
+
+
     public GameObject ManualTurret;
     public GameObject AutomaticTurret;
     public GameObject BarrierTurret;
@@ -71,13 +74,24 @@ public class TurretHandler : MonoBehaviour
                 {
                     if (Vector3.Distance(Player.transform.position, turret.transform.position) <= Range)
                     {
-                        if (Player.GetComponentInChildren<Camera>().enabled)
+                        if (!turret.GetComponent<TurretScript>().broken)
                         {
-                            TurretPlayer(false, turret);
+                            if (Camera.enabled)
+                            {
+                                TurretPlayer(false, turret);
+                            }
+                            else
+                            {
+
+                                TurretPlayer(true, turret);
+                            }
                         }
-                        else
+                        else if (turret.GetComponent<TurretScript>().broken)
                         {
-                            TurretPlayer(true, turret);
+                            //getmouse = false;
+                            TurretSelector.enabled = false;
+                            turret.GetComponent<Malfunction>().CurrentTask.SetActive(true);
+                            Cursor.lockState = CursorLockMode.Confined;
                         }
                     }
                 }
@@ -105,8 +119,8 @@ public class TurretHandler : MonoBehaviour
     public void TurretPlayer(bool UsePlayer, GameObject turret)
     {
         Player.GetComponentInChildren<MeshRenderer>().enabled = UsePlayer;
-        Player.GetComponentInChildren<Camera>().enabled = UsePlayer;
-
+        Camera.enabled = UsePlayer;
+        TurretSelector.enabled = UsePlayer;
         turret.GetComponent<TurretScript>().UseTurret(!UsePlayer);
 
     }

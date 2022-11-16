@@ -17,11 +17,16 @@ public class TurretScript : MonoBehaviour
     public Canvas canvas;
     public Camera Turretcam;
 
+    private Malfunction malfunction;
+
     public bool used;
+
+    public bool broken = false;
     void Start()
     {
         // Lock the mouse cursor to the game screen.
         Cursor.lockState = CursorLockMode.Locked;
+        malfunction = GetComponent<Malfunction>();
     }
 
     public void UseTurret(bool use)
@@ -68,6 +73,10 @@ public class TurretScript : MonoBehaviour
         }
         else
         {
+            if (!broken)
+            {
+                malfunction.timeractive = true;
+            }
             canvas.gameObject.SetActive(false);
         }
 
