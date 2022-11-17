@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     // Get the Bullet for the BulletDamage
-    //private Bullet bullet;
+    //private List<Bullet> bullet;
 
     [SerializeField] public int maxHealth = 100;
     [SerializeField] public int currentHealth;
@@ -16,14 +16,17 @@ public class EnemyHealth : MonoBehaviour
 
     private void Start()
     {
-        // Initialize bullet
-        //bullet = FindObjectOfType<Bullet>();
-
         // Set the currenthealth
         currentHealth = maxHealth;
 
         // Set the healthbar to the maxHealth
         healthBar.SetMaxHealth(maxHealth);
+    }
+
+    private void Update()
+    {
+        // Initialize bullet
+        //bullet = FindObjectOfType<Bullet>();
     }
 
     private void OnTriggerEnter(Collider other)
