@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 882994731375996904}
   - component: {fileID: 882994731375996907}
-  - component: {fileID: 8351387408921586138}
   - component: {fileID: 5240918325431135960}
   m_Layer: 0
   m_Name: Player
@@ -52,26 +51,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!114 &8351387408921586138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 882994731375996905}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00f3e1eacbfc484499abbe889fbb0175, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  barrierCost: 0
-  barrierYOfsset: 0
-  barrierBuildTime: 100
-  barrierX1: 0
-  barrierX2: 0
-  barrierPrefab: {fileID: 4697686106637182880, guid: 6eef0f93662975944a7198e41e365730, type: 3}
-  barrierWallPrefab: {fileID: 188401275749995042, guid: 6b079a9054660ad4e89061cfd07d9b4b, type: 3}
-  barrierPosition: {x: 0, y: 0.52, z: 0}
 --- !u!114 &5240918325431135960
 MonoBehaviour:
   m_ObjectHideFlags: 0
