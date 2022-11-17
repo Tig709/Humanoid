@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public class PlaceBarrier : MonoBehaviour
 {
@@ -46,7 +45,6 @@ public class PlaceBarrier : MonoBehaviour
     private void PlaceFirst()
     {
         barrierPosition = new Vector3(transform.position.x, barrierPosition.y, transform.position.z);
-        //barrierPosition = new Vector3(barrierPosition.x + barrierX1, barrierPosition.y, barrierPosition.z);
         Instantiate(barrierPrefab, barrierPosition, Quaternion.identity);
         whatToPlace = "PlaceFirst";
     }

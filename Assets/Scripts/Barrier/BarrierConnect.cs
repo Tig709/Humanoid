@@ -36,9 +36,10 @@ public class BarrierConnect : MonoBehaviour
                 closest = ob;
                 distance = curDistance;
                 Vector2 direction = transform.position - ob.transform.position;
-                direction.Normalize();
+                Vector3 direction2 = transform.position - ob.transform.position;
+                float directionAngle = (float)Mathf.Atan2(direction.y, direction.x);
                 Debug.Log(distance);
-                if (distance < 10&& distance>5)
+                if (distance < 10 && distance>5)
                 {
                     GameObject[] barrierWall = GameObject.FindGameObjectsWithTag("BarrierTower");
                     foreach (GameObject gameObject in barrierWall)
