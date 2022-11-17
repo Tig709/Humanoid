@@ -35,10 +35,10 @@ public class BarrierHealth : MonoBehaviour
     {
         barrierHealth -= damageAmount;
         showHealthbar = true;
-        if (barrierHealth <= 0)
+/*        if (barrierHealth <= 0)
         {
             GetDestroyed();
-        }
+        }*/
         healthbar.SetHealth(barrierHealth);
     }
 

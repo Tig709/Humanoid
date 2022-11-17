@@ -39,6 +39,7 @@ sysinfo.txt
 Logs
 obj
 Library
+UserSettings
 
 # Crashlytics generated file
 Assets/StreamingAssets/crashlytics-build.properties
