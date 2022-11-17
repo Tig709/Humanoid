@@ -16,6 +16,8 @@ public class TurretHandler : MonoBehaviour
     public Image Box0, Box1, Box2;
     public Sprite ManualSprite, AutoSprite, BarrierSprite;
 
+    public float turretY = 0;
+
     public int Spritewheel = 0;
 
 
@@ -97,6 +99,7 @@ public class TurretHandler : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.K))
         {
+            
             Vector3 placeposition = new Vector3(Player.transform.position.x, 0, Player.transform.position.z);
             PlaceTurret(placeposition, (TurretHandler.TurretTypes)CurrentTurret);
         }

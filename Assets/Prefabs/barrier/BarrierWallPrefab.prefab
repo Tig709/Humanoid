@@ -438,7 +438,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1511822348683147789, guid: 7779b7f04bc893e48852cd1996218295, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.76
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1511822348683147789, guid: 7779b7f04bc893e48852cd1996218295, type: 3}
       propertyPath: m_LocalPosition.z
@@ -480,6 +480,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: BarrierWall
       objectReference: {fileID: 0}
+    - target: {fileID: 8963021269994873165, guid: 7779b7f04bc893e48852cd1996218295, type: 3}
+      propertyPath: barrierWallPrefab
+      value: 
+      objectReference: {fileID: 188401275749995042}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7779b7f04bc893e48852cd1996218295, type: 3}
 --- !u!4 &2748194033936968794 stripped
@@ -498,6 +502,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ForceField
       objectReference: {fileID: 0}
+    - target: {fileID: 3815790381350426714, guid: e0f697f8cd5b417408a1f192966d8d28, type: 3}
+      propertyPath: m_TagString
+      value: BarrierWall
+      objectReference: {fileID: 0}
     - target: {fileID: 5212176210776262438, guid: e0f697f8cd5b417408a1f192966d8d28, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -512,7 +520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5212176210776262438, guid: e0f697f8cd5b417408a1f192966d8d28, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.54
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5212176210776262438, guid: e0f697f8cd5b417408a1f192966d8d28, type: 3}
       propertyPath: m_LocalPosition.z
@@ -648,7 +656,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1511822348683147789, guid: 7779b7f04bc893e48852cd1996218295, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.76
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1511822348683147789, guid: 7779b7f04bc893e48852cd1996218295, type: 3}
       propertyPath: m_LocalPosition.z
@@ -690,6 +698,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: BarrierWall
       objectReference: {fileID: 0}
+    - target: {fileID: 8963021269994873165, guid: 7779b7f04bc893e48852cd1996218295, type: 3}
+      propertyPath: barrierWallPrefab
+      value: 
+      objectReference: {fileID: 188401275749995042}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7779b7f04bc893e48852cd1996218295, type: 3}
 --- !u!4 &5011141534708640322 stripped

@@ -245,9 +245,17 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8351387408921586138, guid: 89d6c89d1099cc44496c9fb5f3e1603f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351387408921586138, guid: 89d6c89d1099cc44496c9fb5f3e1603f, type: 3}
       propertyPath: barrierPrefab
       value: 
       objectReference: {fileID: 4498805528834310787, guid: 7779b7f04bc893e48852cd1996218295, type: 3}
+    - target: {fileID: 8351387408921586138, guid: 89d6c89d1099cc44496c9fb5f3e1603f, type: 3}
+      propertyPath: barrierPosition.y
+      value: 2.81
+      objectReference: {fileID: 0}
     - target: {fileID: 8351387408921586138, guid: 89d6c89d1099cc44496c9fb5f3e1603f, type: 3}
       propertyPath: barrierWallPrefab
       value: 
@@ -269,6 +277,10 @@ PrefabInstance:
       propertyPath: ManualTurret
       value: 
       objectReference: {fileID: 2018666056216673854, guid: f6910f9243302b44b9455203d5858bc7, type: 3}
+    - target: {fileID: 2739538855567487095, guid: 25f318e8264fa3d419ff7f487755367c, type: 3}
+      propertyPath: BarrierTurret
+      value: 
+      objectReference: {fileID: 4498805528834310787, guid: 7779b7f04bc893e48852cd1996218295, type: 3}
     - target: {fileID: 2739538855567487095, guid: 25f318e8264fa3d419ff7f487755367c, type: 3}
       propertyPath: AutomaticTurret
       value: 
@@ -425,11 +437,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8686367306702366906, guid: 40efff8faafe3dc468dacb2067ace588, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000017659858
+      value: -0.000000017659856
       objectReference: {fileID: 0}
     - target: {fileID: 8686367306702366906, guid: 40efff8faafe3dc468dacb2067ace588, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000016409465
+      value: 0.0000000016409463
       objectReference: {fileID: 0}
     - target: {fileID: 8686367307236274468, guid: 40efff8faafe3dc468dacb2067ace588, type: 3}
       propertyPath: m_LocalRotation.y
