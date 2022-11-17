@@ -95,6 +95,17 @@ public class SpeedyEnemyAI : MonoBehaviour
         }
     }
 
+    private void StateHandler()
+    {
+        // Change the enemyState depending on te situation
+        if (!atEndGoal) enemyCurrentState = enemyStates.moveToEndGoal;
+        if (atEndGoal) enemyCurrentState = enemyStates.atEndGoal;
+    }
+
+    //================================
+    //          Waypoints
+    //================================
+
     private void MoveToEndGoal()
     {
         // State Move towards the endGoal
@@ -139,28 +150,6 @@ public class SpeedyEnemyAI : MonoBehaviour
         moving = true;
     }
 
-    private void MoveToLastWaypoint()
-    {
-        // Method for moving to the last selected waypoint, so that the enemy doesn't get softlocked after attacking a turret
-
-        // If the enemy is at the last waypoint atEnd is true
-        if (index == waypoints.Count)
-        {
-            atEndGoal = true;
-        }
-
-        // Move to the position of the target
-        agent.SetDestination(currentWaypointTarget.position);
-        moving = true;
-    }
-
-    private void StateHandler()
-    {
-        // Change the enemyState depending on te situation
-        if (!atEndGoal) enemyCurrentState = enemyStates.moveToEndGoal;
-        if (atEndGoal) enemyCurrentState = enemyStates.atEndGoal;
-    }
-
     private void EnemyAtEndGoal()
     {
         // Kill this enemy
@@ -170,3 +159,19 @@ public class SpeedyEnemyAI : MonoBehaviour
         endGoal.setEndGoalLivesMinusOne();
     }
 }
+
+
+/*private void MoveToLastWaypoint()
+{
+    // Method for moving to the last selected waypoint, so that the enemy doesn't get softlocked after attacking a turret
+
+    // If the enemy is at the last waypoint atEnd is true
+    if (index == waypoints.Count)
+    {
+        atEndGoal = true;
+    }
+
+    // Move to the position of the target
+    agent.SetDestination(currentWaypointTarget.position);
+    moving = true;
+}*/

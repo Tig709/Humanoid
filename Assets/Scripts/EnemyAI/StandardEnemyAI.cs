@@ -45,7 +45,7 @@ public class StandardEnemyAI : MonoBehaviour
 
     private bool justMovedToTurret;
 
-    [SerializeField] private int minRandom, maxRandom, randomLower;    
+    [SerializeField] private int minRandom, maxRandom, randomLower;
 
     [SerializeField]
     private Transform enemyBulletPrefab;
@@ -91,8 +91,8 @@ public class StandardEnemyAI : MonoBehaviour
         // Assign the layer of the turret to the turretLayerMask
         turretLayer = LayerMask.GetMask("Turret");
 
-        // Assign
-        detectTimer = 0f; 
+        // Assign the timer
+        detectTimer = 0f;
 
         // Check if no components are missing
         if (agent == null) { UnityEngine.Debug.LogError("NavMeshAgent is missing"); }
@@ -108,7 +108,7 @@ public class StandardEnemyAI : MonoBehaviour
 
             // Start moving towards the next target waypoint
             agent.SetDestination(currentWaypointTarget.position);
-        }        
+        }
     }
 
     // Update is called once per frame
@@ -119,6 +119,8 @@ public class StandardEnemyAI : MonoBehaviour
         //animator.SetFloat("speed", speedPercent);
 
         detectTimer += Time.deltaTime;
+
+        Detection();
 
         StateHandler();
 
@@ -141,6 +143,19 @@ public class StandardEnemyAI : MonoBehaviour
                 break;
         }
     }
+
+    private void StateHandler()
+    {
+        // Change the enemyState depending on te situation
+        if (!turretInSightRange && !willAttackTurret && !turretInAttackRange && !atEndGoal) enemyCurrentState = enemyStates.moveToEndGoal;
+        if (turretInSightRange && willAttackTurret && !turretInAttackRange && !atEndGoal) enemyCurrentState = enemyStates.moveToTurret;
+        if (turretInSightRange && willAttackTurret && turretInAttackRange && !atEndGoal) enemyCurrentState = enemyStates.attackTurret;
+        if (atEndGoal) enemyCurrentState = enemyStates.atEndGoal;
+    }
+
+    //================================
+    //          Waypoints
+    //================================
 
     private void MoveToEndGoal()
     {
@@ -210,7 +225,21 @@ public class StandardEnemyAI : MonoBehaviour
         moving = true;
     }
 
-    private void StateHandler()
+    private void EnemyAtEndGoal()
+    {
+        // Kill this enemy
+        Destroy(this.gameObject);
+
+        // Take one live away from the endGoal
+        endGoal.setEndGoalLivesMinusOne();
+    }
+
+    //===========================================
+    //        Turret detection/attack
+    //===========================================
+
+
+    private void Detection()
     {
         // RNG for detection
         if (detectTimer > detectTimerCD)
@@ -221,7 +250,7 @@ public class StandardEnemyAI : MonoBehaviour
         }
 
         // Check for sight and attack range
-        turretInSightRange = Physics.CheckSphere(transform.position, sightRange, turretLayer); 
+        turretInSightRange = Physics.CheckSphere(transform.position, sightRange, turretLayer);
 
         // Check if the enemy wants to attack the turret
         if (turretInSightRange && randomnesForAttackingTurret && !turretInAttackRange)
@@ -239,16 +268,32 @@ public class StandardEnemyAI : MonoBehaviour
             }
         }
 
+        // If the enemy just moved to the turret check if a turret is in attack range
         if (justMovedToTurret)
         {
             turretInAttackRange = Physics.CheckSphere(transform.position, attackRange, turretLayer);
         }
+    }
 
-        // Change the enemyState depending on te situation
-        if (!turretInSightRange && !willAttackTurret && !turretInAttackRange && !atEndGoal) enemyCurrentState = enemyStates.moveToEndGoal;
-        if (turretInSightRange && willAttackTurret && !turretInAttackRange && !atEndGoal) enemyCurrentState = enemyStates.moveToTurret;
-        if (turretInSightRange && willAttackTurret && turretInAttackRange && !atEndGoal) enemyCurrentState = enemyStates.attackTurret;
-        if (atEndGoal) enemyCurrentState = enemyStates.atEndGoal;        
+    private GameObject GetClosestTurret(GameObject[] turrets)
+    {
+        // Method for getting the closestTurret to the enemy
+        GameObject bestTarget = null;
+        float closestDistanceSqr = Mathf.Infinity;
+        Vector3 currentPosition = transform.position;
+
+        // Check each potential Turret as a Target
+        foreach (GameObject potentialTarget in turrets)
+        {
+            Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
+            float dSqrToTarget = directionToTarget.sqrMagnitude;
+            if (dSqrToTarget < closestDistanceSqr)
+            {
+                closestDistanceSqr = dSqrToTarget;
+                bestTarget = potentialTarget;
+            }
+        }
+        return bestTarget;
     }
 
     private void MoveToTurret()
@@ -276,7 +321,7 @@ public class StandardEnemyAI : MonoBehaviour
         GameObject[] possibleTurretTargets = GameObject.FindGameObjectsWithTag("Turret");
         closestTurret = GetClosestTurret(possibleTurretTargets);
 
-        justAttackedTurret = true;           
+        justAttackedTurret = true;
 
         // Stop the enemy from moving into the turret
         agent.SetDestination(transform.position);
@@ -307,36 +352,6 @@ public class StandardEnemyAI : MonoBehaviour
     {
         alreadyAttacked = false;
     }
-
-    private void EnemyAtEndGoal()
-    {
-        // Kill this enemy
-        Destroy(this.gameObject);
-
-        // Take one live away from the endGoal
-        endGoal.setEndGoalLivesMinusOne();
-    }
-
-    private GameObject GetClosestTurret(GameObject[] turrets)
-    {
-        // Method for getting the closestTurret to the enemy
-        GameObject bestTarget = null;
-        float closestDistanceSqr = Mathf.Infinity;
-        Vector3 currentPosition = transform.position;
-
-        // Check each potential Turret as a Target
-        foreach (GameObject potentialTarget in turrets)
-        {
-            Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
-            float dSqrToTarget = directionToTarget.sqrMagnitude;
-            if (dSqrToTarget < closestDistanceSqr)
-            {
-                closestDistanceSqr = dSqrToTarget;
-                bestTarget = potentialTarget;
-            }
-        }
-        return bestTarget;
-    }
 }
 
 // Draw a trail behind the attack of the enemy
@@ -358,4 +373,3 @@ public class StandardEnemyAI : MonoBehaviour
     if (resultComponent != null)
         yield return resultComponent;
 }*/
-
