@@ -66,6 +66,8 @@ public class TurretHandler : MonoBehaviour
         {
             foreach (GameObject turret in TurretList)
             {
+                if (turret.GetComponent<TurretScript>() != null)
+                {
                 if (turret.GetComponent<TurretScript>().used)
                 {
                     TurretPlayer(true,turret);
@@ -87,6 +89,20 @@ public class TurretHandler : MonoBehaviour
                             }
                         }
                         else if (turret.GetComponent<TurretScript>().broken)
+                        {
+                            //getmouse = false;
+                            TurretSelector.enabled = false;
+                            turret.GetComponent<Malfunction>().CurrentTask.SetActive(true);
+                            Cursor.lockState = CursorLockMode.Confined;
+                        }
+                    }
+                }
+                }
+                else
+                {
+                    if (Vector3.Distance(Player.transform.position, turret.transform.position) <= Range)
+                    {
+                        if (turret.GetComponentInChildren<TurretAttackScript>().broken)
                         {
                             //getmouse = false;
                             TurretSelector.enabled = false;

@@ -8,22 +8,21 @@ public class FuseTask : MonoBehaviour
     public GameObject Lid;
 
     public List<GameObject> nuts;
+    public List<GameObject> Removednuts;
 
     public List<GameObject> fuses;
-
-    public List<GameObject> brokeFuse;
 
     Color Broken = Color.red;
 
     public Malfunction Cannon;
+
+    public GameObject Error;
 
 
     private void Start()
     {
             GameObject fuse = fuses[Random.Range(0, fuses.Count)];
             fuse.GetComponent<Image>().color = Broken;
-
-            brokeFuse.Add(fuse);
 
         Cursor.lockState = CursorLockMode.Confined;
 
@@ -33,13 +32,19 @@ public class FuseTask : MonoBehaviour
     {
         if (button.GetComponent<Image>().color == Broken)
         {
+            Reset();
             Cannon.FixedTurret();
+        }
+        else
+        {
+            FailedTask();
         }
 
     }
 
     public void Removenut(Button button)
     {
+        Removednuts.Add(button.gameObject);
         nuts.Remove(button.gameObject);
         button.gameObject.SetActive(false);
     }
@@ -50,6 +55,43 @@ public class FuseTask : MonoBehaviour
         {
             Lid.SetActive(false);
         }
+    }
+
+    private void FailedTask()
+    {
+        StartCoroutine(WrongFuse());  
+    }
+
+    private IEnumerator WrongFuse()
+    {
+        Error.SetActive(true);
+        yield return new WaitForSeconds(3);
+        Error.SetActive(false);
+        Reset();
+    }
+
+
+    private void Reset()
+    {
+
+        nuts.AddRange(Removednuts);
+        Removednuts.Clear();
+
+        foreach (var nut in nuts)
+        {
+            nut.SetActive(true);
+        }
+
+        Lid.SetActive(true);
+
+        foreach (GameObject fusee in fuses)
+        {
+            fusee.GetComponent<Image>().color = Color.white;
+        }
+
+        GameObject fuse = fuses[Random.Range(0, fuses.Count)];
+        fuse.GetComponent<Image>().color = Broken;
+
     }
 
 }

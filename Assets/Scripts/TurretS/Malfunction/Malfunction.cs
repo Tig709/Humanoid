@@ -11,13 +11,10 @@ public class Malfunction : MonoBehaviour
     public int timer = 0;
     public bool timeractive = true;
 
-    TurretScript turret;
+    public TurretScript turret;
+    public TurretAttackScript turretAtt;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        turret = GetComponent<TurretScript>();
-    }
+    public Transform Cannon;
 
     // Update is called once per frame
     void Update()
@@ -27,12 +24,23 @@ public class Malfunction : MonoBehaviour
             timer++;
         }
 
-
-        if (timer == 1500 && !turret.used && !turret.broken)
+        if (turret != null)
         {
-            timeractive = false;
-            timer = 0;
-            Malfunctions();
+            if (timer == 1500 && !turret.used && !turret.broken)
+            {
+                timeractive = false;
+                timer = 0;
+                Malfunctions();
+            }
+        }
+        else
+        {
+            if (timer == 1500 && !turretAtt.broken)
+            {
+                timeractive = false;
+                timer = 0;
+                Malfunctions();
+            }
         }
     }
 
@@ -41,16 +49,34 @@ public class Malfunction : MonoBehaviour
     public void Malfunctions()
     {
         CurrentTask = tasks[Random.Range(0, tasks.Count)];
-        turret.Cannon.localRotation = Quaternion.AngleAxis(-60, Vector3.forward);
-        turret.broken = true;
+        Cannon.localRotation = Quaternion.AngleAxis(-60, Vector3.forward);
+        if (turret != null)
+        {
+            turret.broken = true;
+        }
+        else
+        {
+            turretAtt.broken = true;
+        }
     }
     public void FixedTurret()
     {
-        turret.Cannon.localRotation = Quaternion.AngleAxis(0, Vector3.forward);
-        turret.broken = false;
+        Cannon.localRotation = Quaternion.AngleAxis(0, Vector3.forward);
+        if (turret != null)
+        {
+            turret.broken = false;
+        }
+        else
+        {
+            turretAtt.broken = false;
+        }
         timeractive = true;
-
         CurrentTask.SetActive(false);
-
     }
+
+    public void FailedCheck()
+    {
+        CurrentTask.SetActive(false);
+    }
+
 }

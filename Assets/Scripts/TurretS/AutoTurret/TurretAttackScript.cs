@@ -13,13 +13,13 @@ public class TurretAttackScript : MonoBehaviour
     private int shotCooldown = 2;
     private Stopwatch shotTimer = new Stopwatch();
 
+    public bool broken = false;
+
 
     private void Start()
     {
         //Activates the timer for shooting targets as soon as the object is made.
         shotTimer.Start();
-        //Finds the transform of the turrets cannon in it's children.
-        turretCannon = transform.Find("Turret");
     }
     private void LookForTarget()
     {
@@ -51,6 +51,9 @@ public class TurretAttackScript : MonoBehaviour
 
     private void Update()
     {
+
+        if (!broken)
+        {
         //If there is a target, aim at it and fire at a set interval. If there is no target, try to find a new one.
         if (target != null)
         {
@@ -65,6 +68,8 @@ public class TurretAttackScript : MonoBehaviour
         if (target == null)
         {
             LookForTarget();
+        }
+
         }
     }
 }

@@ -52,7 +52,7 @@ public class TurretHealthScript : MonoBehaviour
     public void GetDestroyed()
     {
         /*Instantiate(brokenTurretPrefab, this.transform.position, this.transform.rotation);*/
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
     }
 
     private void Update()

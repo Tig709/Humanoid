@@ -11,7 +11,7 @@ public class HealthBillBoardScript : MonoBehaviour
     private void Start()
     {
         myPos = GetComponent<Transform>();
-        cam = GameObject.FindGameObjectWithTag("PlayerCam").GetComponent<Transform>();
+        cam = Camera.main.transform;
     }
     private void LateUpdate()
     {
