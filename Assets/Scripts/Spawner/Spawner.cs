@@ -68,8 +68,11 @@ public class Spawner : MonoBehaviour
                 waveTimer -= Time.fixedDeltaTime;
         }
 
-        if (waveTimer <= 0 && spawnedEnemies.Count <= 0)
+        
+        // If the waveTimer is lower than 0 and there are no enemies alive...
+        if (waveTimer <= 0 && spawnedEnemies.Count <= 0) 
         {
+            //... Go to the next wave
             currWave++;
             source.PlayOneShot(beginWave);
             GenerateWave();
@@ -103,8 +106,6 @@ public class Spawner : MonoBehaviour
             spawnInterval = maxSpawnInterval;
         else
             spawnInterval = waveDuration / enemiesToSpawn.Count;
-
-
     }
 
     public void GenerateEnemies()
