@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthBillBoardScript : MonoBehaviour
+public class EnemyAIHealthBillBoardScript : MonoBehaviour
 {
     [SerializeField]
     Transform cam;
