@@ -152,7 +152,6 @@ public class GridManager : MonoBehaviour
 
         Physics.Raycast(position, Vector3.down, out TileData, 5, layerMask);
 
-        Debug.Log(TileData.transform.tag);
         if (type == TurretHandler.TurretTypes.Manual || type == TurretHandler.TurretTypes.Automatic)
         {
             if (TileData.transform.gameObject.tag == "TurretPlace" && !TileData.transform.gameObject.GetComponent<TileScript>().Used)

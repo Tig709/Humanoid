@@ -152,7 +152,7 @@ public class TurretHandler : MonoBehaviour
             }
         }
 
-        if (true)
+        if (TurretList.Count != 0)
         {
             foreach (var turret in TurretList)
             {
@@ -168,7 +168,7 @@ public class TurretHandler : MonoBehaviour
                 }
                 else
                 {
-                        if (!turret.GetComponent<TurretAttackScript>().broken)
+                        if (!turret.GetComponentInChildren<TurretAttackScript>().broken)
                         {
                             if (!TurretSelector.enabled)
                             {
