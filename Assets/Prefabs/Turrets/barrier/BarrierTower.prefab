@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 141693975676103512}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.4928894, y: 2.2439656, z: 0}
+  m_LocalPosition: {x: 0, y: 2.2439656, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -122,7 +122,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4498805528834310787}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.81, z: 0}
+  m_LocalPosition: {x: 0, y: 2.3, z: 0}
   m_LocalScale: {x: 1, y: 1.06, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -143,7 +143,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd06389c8cb11f44ac9b8c6098f6011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  barrierWallPrefab: {fileID: 188401275749995042, guid: 6b079a9054660ad4e89061cfd07d9b4b, type: 3}
+  WallPrefab: {fileID: 3815790381350426714, guid: e0f697f8cd5b417408a1f192966d8d28, type: 3}
+  distance: 0
+  Found: 0
+  WallMade: 0
 --- !u!1 &4744573511007740250
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +174,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4744573511007740250}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.4928894, y: -0.1549344, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 2.0211, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
