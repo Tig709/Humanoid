@@ -35,8 +35,6 @@ public class TurretHandler : MonoBehaviour
 
     private int CurrentTurret;
 
-    private bool fixTurret = false;
-
 
     public enum TurretTypes
     {
@@ -110,7 +108,6 @@ public class TurretHandler : MonoBehaviour
                                 {
                                     if (!turret.GetComponent<TurretScript>().broken)
                                     {
-                                        fixTurret = false;
 
                                         if (Camera.enabled)
                                         {
@@ -128,53 +125,25 @@ public class TurretHandler : MonoBehaviour
                                         turret.GetComponent<Malfunction>().CurrentTask.SetActive(true);
                                         Cursor.lockState = CursorLockMode.Confined;
 
-                                        fixTurret = true;
-
                                     }
                                 }
                             }
                         }
                         else
                         {
-                            if (turret.GetComponent<TurretScript>().broken)
+                            if (Vector3.Distance(Player.transform.position, turret.transform.position) <= Range)
                             {
-                                //getmouse = false;
-                                TurretSelector.enabled = false;
-                                turret.GetComponent<Malfunction>().CurrentTask.SetActive(true);
-                                Cursor.lockState = CursorLockMode.Confined;
+                                if (turret.GetComponentInChildren<TurretAttackScript>().broken)
+                                {
+                                    //getmouse = false;
+                                    TurretSelector.enabled = false;
+                                    turret.GetComponentInChildren<Malfunction>().CurrentTask.SetActive(true);
+                                    Cursor.lockState = CursorLockMode.Confined;
 
-                                fixTurret = true;
-
+                                }
                             }
                         }
                     }
-                }
-            }
-        }
-
-        if (TurretList.Count != 0)
-        {
-            foreach (var turret in TurretList)
-            {
-                if (turret.GetComponent<TurretScript>() != null)
-                {
-                    if (!turret.GetComponent<TurretScript>().broken)
-                    {
-                        if (!TurretSelector.enabled)
-                        {
-                            TurretSelector.enabled = true;
-                        }
-                    }
-                }
-                else
-                {
-                        if (!turret.GetComponentInChildren<TurretAttackScript>().broken)
-                        {
-                            if (!TurretSelector.enabled)
-                            {
-                                TurretSelector.enabled = true;
-                            }
-                        }
                 }
             }
         }
@@ -198,6 +167,7 @@ public class TurretHandler : MonoBehaviour
         turret.GetComponent<TurretScript>().UseTurret(!UsePlayer);
 
     }
+
 
     private void MakeForcefields()
     {
