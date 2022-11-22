@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 5b31943193c91a84b8f3c5e6566fc75b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - ScrapLayer1: {fileID: 715910809928020816, guid: 1d50d726fa625ab40863b855736e3000, type: 3}
+  - ScrapLayer2: {fileID: 8346377642136619102, guid: c999453ef1c09dd48853103053e8b4de, type: 3}
+  - ScrapLayer3: {fileID: 7500649862751554352, guid: 74c0034d7aaf27c4a962c4ab39c95c4e, type: 3}
+  - ScrapLayer4: {fileID: 1088054994853958258, guid: 7b5128ceeaba377488178789204a99a6, type: 3}
+  - ScrapLayer5: {fileID: 1060936738600959731, guid: 139546a3ea44030488be63bf5a266912, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
