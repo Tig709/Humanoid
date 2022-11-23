@@ -429,6 +429,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6838856177973245965, guid: 1d50d726fa625ab40863b855736e3000, type: 3}
+      propertyPath: scaleFactor
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 715910809928020816, guid: 1d50d726fa625ab40863b855736e3000, type: 3}
       propertyPath: m_Name
       value: ScrapLayer1
@@ -701,11 +705,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8686367306702366906, guid: 40efff8faafe3dc468dacb2067ace588, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000017659858
+      value: -0.000000017659856
       objectReference: {fileID: 0}
     - target: {fileID: 8686367306702366906, guid: 40efff8faafe3dc468dacb2067ace588, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000016409465
+      value: 0.0000000016409463
       objectReference: {fileID: 0}
     - target: {fileID: 8686367307236274468, guid: 40efff8faafe3dc468dacb2067ace588, type: 3}
       propertyPath: m_LocalRotation.y

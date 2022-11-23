@@ -27,7 +27,7 @@ public class ResourcePileManager : MonoBehaviour
 
     //used to decide which number gets multiplied with the scale of the pile
     [SerializeField]
-   private float scaleFactor = 1.2f;
+   private float scaleFactor = 1.5f;
 
     //this boolean checks if pilelevel is zero
     private bool isPileLevel0 = true;
@@ -82,7 +82,7 @@ public class ResourcePileManager : MonoBehaviour
         {
             pileLevel++;
             Scrap.transform.position = activePosition;
-            Scrap.transform.localScale *= 1.2f;
+            //Scrap.transform.localScale *= 1.2f;
             isPileLevel0 = false;
         }
     }
