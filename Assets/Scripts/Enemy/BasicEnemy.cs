@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class BasicEnemy : MonoBehaviour
 {
-    [SerializeField] public int maxHealth = 100;
-    [SerializeField] public int currentHealth;
+    [SerializeField]  int Health;
 
-    public BarrierHealthBar healthBar;
+    //public BarrierHealthBar healthBar;
 
     void Start()
     {
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        
     }
 
     // Update is called once per frame
@@ -33,11 +31,9 @@ public class BasicEnemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
+        Health -= damage;
 
-        healthBar.SetHealth(currentHealth);
-
-        if (currentHealth <= 0)
+        if (Health <= 0)
         {
             Destroy(this.gameObject);
         }
