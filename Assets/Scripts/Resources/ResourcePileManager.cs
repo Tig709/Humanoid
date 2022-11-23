@@ -38,6 +38,7 @@ public class ResourcePileManager : MonoBehaviour
 
     private GameObject Scrap;
     float timePassed = 0f;
+    bool hasCollision = false;
 
     void Start()
     {
@@ -50,7 +51,11 @@ public class ResourcePileManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(pileLevel);
+
+        if(hasCollision && Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("hasColl");
+        }
         if (!isPileLevel0 && pileLevel < maxPileLevel)
         {
             timePassed += Time.deltaTime;
@@ -60,6 +65,23 @@ public class ResourcePileManager : MonoBehaviour
                 Scrap.transform.localScale *= scaleFactor;
                 timePassed = 0;
             }
+        }
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player" )//&& Input.GetKeyDown(KeyCode.E))
+        {
+           // Debug.Log("collision");
+            hasCollision = true;
+        }
+    }
+
+    public void OnCollisionExit(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            hasCollision = false;
         }
     }
 
@@ -82,7 +104,6 @@ public class ResourcePileManager : MonoBehaviour
         {
             pileLevel++;
             Scrap.transform.position = activePosition;
-            //Scrap.transform.localScale *= 1.2f;
             isPileLevel0 = false;
         }
     }
