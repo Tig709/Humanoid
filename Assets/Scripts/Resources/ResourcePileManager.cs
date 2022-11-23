@@ -25,28 +25,39 @@ public class ResourcePileManager : MonoBehaviour
     [SerializeField]
     private int maxPileLevel = 5;
 
+    //used to decide which number gets multiplied with the scale of the pile
+    [SerializeField]
+   private float scaleFactor = 1.2f;
+
     //this boolean checks if pilelevel is zero
     private bool isPileLevel0 = true;
 
+    //used to not show the resource pile when it is level 0
+    private Vector3 notActivePosition;
+    private Vector3 activePosition;
+
     private GameObject Scrap;
     float timePassed = 0f;
-    
+
     void Start()
     {
         Scrap = this.gameObject;
+        notActivePosition = Scrap.transform.position;
+        activePosition = new Vector3(Scrap.transform.position.x, 0.5f, Scrap.transform.position.z);
         StartCounting();
+        Scrap.transform.position = notActivePosition;
     }
 
     private void Update()
     {
         Debug.Log(pileLevel);
-        if (!isPileLevel0 && pileLevel <= maxPileLevel)
+        if (!isPileLevel0 && pileLevel < maxPileLevel)
         {
             timePassed += Time.deltaTime;
             if (timePassed > timeBetweenNext)
             {
                 pileLevel++;
-                Scrap.transform.localScale *= 1.2f;
+                Scrap.transform.localScale *= scaleFactor;
                 timePassed = 0;
             }
         }
@@ -70,6 +81,7 @@ public class ResourcePileManager : MonoBehaviour
         if (currentTime == cooldown && isPileLevel0)
         {
             pileLevel++;
+            Scrap.transform.position = activePosition;
             Scrap.transform.localScale *= 1.2f;
             isPileLevel0 = false;
         }
