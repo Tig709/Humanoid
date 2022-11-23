@@ -5,6 +5,13 @@ using UnityEngine.UI;
 
 public class ResourcePileManager : MonoBehaviour
 {
+    //TODO:
+    //canvas must not scale
+    //canvas only on screen when player close
+    //canvas always look at player so player always can read text
+    //other text color
+    //player logic for barrier
+
     //current time used to count the cooldown
     [SerializeField]//serialized for debugging
     private int currentTime = 0;
@@ -29,6 +36,9 @@ public class ResourcePileManager : MonoBehaviour
     [SerializeField]
    private float scaleFactor = 1.5f;
 
+    [SerializeField]
+    private Canvas resourceCanvas;
+
     //this boolean checks if pilelevel is zero
     private bool isPileLevel0 = true;
 
@@ -36,7 +46,11 @@ public class ResourcePileManager : MonoBehaviour
     private Vector3 notActivePosition;
     private Vector3 activePosition;
 
+    //decides startscale so it can be resetted
+    private Vector3 startScale;
+
     private GameObject Scrap;
+    
     float timePassed = 0f;
     bool hasCollision = false;
 
@@ -44,6 +58,7 @@ public class ResourcePileManager : MonoBehaviour
     {
         Scrap = this.gameObject;
         notActivePosition = Scrap.transform.position;
+        startScale = Scrap.transform.localScale;
         activePosition = new Vector3(Scrap.transform.position.x, 0.5f, Scrap.transform.position.z);
         StartCounting();
         Scrap.transform.position = notActivePosition;
@@ -51,11 +66,25 @@ public class ResourcePileManager : MonoBehaviour
 
     private void Update()
     {
+        
 
-        if(hasCollision && Input.GetKeyDown(KeyCode.E))
+        if(hasCollision && Input.GetKeyDown(KeyCode.R))
         {
             Debug.Log("hasColl");
+            Scrap.transform.position = notActivePosition;
+            Scrap.transform.localScale = startScale;
+            pileLevel = 0;
+            isPileLevel0 = true;
+            currentTime = 0;
+            timePassed = 0;
+
         }
+
+        if (isPileLevel0)
+        {
+            resourceCanvas.gameObject.SetActive(false);
+        }
+
         if (!isPileLevel0 && pileLevel < maxPileLevel)
         {
             timePassed += Time.deltaTime;
@@ -70,9 +99,8 @@ public class ResourcePileManager : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Player" )//&& Input.GetKeyDown(KeyCode.E))
+        if(collision.gameObject.tag == "Player" )
         {
-           // Debug.Log("collision");
             hasCollision = true;
         }
     }
@@ -105,6 +133,7 @@ public class ResourcePileManager : MonoBehaviour
             pileLevel++;
             Scrap.transform.position = activePosition;
             isPileLevel0 = false;
+            resourceCanvas.gameObject.SetActive(true);
         }
     }
 }
