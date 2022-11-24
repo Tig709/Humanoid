@@ -12,6 +12,7 @@ public class TurretAttackScript : MonoBehaviour
     [SerializeField]
     private int shotCooldown = 2;
     private Stopwatch shotTimer = new Stopwatch();
+    List<GameObject> possibleTargets = new List<GameObject>();
 
     public bool broken = false;
 
@@ -24,20 +25,23 @@ public class TurretAttackScript : MonoBehaviour
     private void LookForTarget()
     {
         //This function Checks all enemies, looks to see if they are within range and if they are, chooses the closest one as a target.
-        GameObject[] possibleTargets = GameObject.FindGameObjectsWithTag("Enemy");
+        possibleTargets.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
         int targetArrayPos = 0;
         float smallestDistanceFound = maxDistance;
-        for (int i = 0; i < possibleTargets.Length; i++)
+        for (int i = 0; i < possibleTargets.Count; i++)
         {
-            float distance = Vector3.Distance(transform.position, possibleTargets[i].transform.position);
-            if (distance < smallestDistanceFound)
+            if (possibleTargets[i] != null)
             {
-                targetArrayPos = i;
-                smallestDistanceFound = distance;
+                float distance = Vector3.Distance(transform.position, possibleTargets[i].transform.position);
+                if (distance < smallestDistanceFound)
+                {
+                    targetArrayPos = i;
+                    smallestDistanceFound = distance;
+                }
             }
-
+            target = possibleTargets[targetArrayPos].transform;
         }
-        target = possibleTargets[targetArrayPos].transform;
+
     }
 
     private void ShootBullet()

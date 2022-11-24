@@ -4,58 +4,53 @@ using UnityEngine;
 
 public class BarrierConnect : MonoBehaviour
 {
-    private GameObject[] otherBarriers;
-    float distance;
-    GameObject closest = null;
-    [SerializeField]
-    GameObject barrierWallPrefab;
+    TurretHandler TurretHandler;
 
-    // Start is called before the first frame update
-    void Start()
+    public GameObject WallPrefab;
+
+    public int distance;
+
+    public bool Found, WallMade;
+
+    public GameObject OtherTowerFound;
+
+
+
+    private void Start()
     {
-        distance = 400;
+        Found = false;
+        WallMade = false;
+
+        TurretHandler = FindObjectOfType<TurretHandler>();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void Update()
     {
-        FindClosestTower();
-        WallRotation();
-    }
-
-    public GameObject FindClosestTower()
-    {
-
-        otherBarriers = GameObject.FindGameObjectsWithTag("BarrierTower");
-
-        foreach (GameObject ob in otherBarriers)
+        if (!Found)
         {
-            float curDistance = Vector3.Distance(transform.position, ob.transform.position);
-            if (curDistance < distance)
-            {
-                closest = ob;
-                distance = curDistance;
-                Vector2 direction = transform.position - ob.transform.position;
-                Vector3 direction2 = transform.position - ob.transform.position;
-                float directionAngle = (float)Mathf.Atan2(direction.y, direction.x);
-                Debug.Log(distance);
-                if (distance < 10 && distance>5)
+            LookForTowers();
+        }
+    }
+
+    private void LookForTowers()
+    {
+        foreach (GameObject Tower in TurretHandler.BarrierList)
+        {
+                if (Vector3.Distance(Tower.transform.position,this.transform.position) <= 10)
+                { 
+                if (Tower.gameObject == this.gameObject)
                 {
-                    GameObject[] barrierWall = GameObject.FindGameObjectsWithTag("BarrierTower");
-                    foreach (GameObject gameObject in barrierWall)
-                    {
-                        ob.SetActive(false);
-                        this.gameObject.SetActive(false);
-                    }
-                    Instantiate(barrierWallPrefab, transform.position, Quaternion.identity);
+                    continue;
                 }
+                else
+                {
+                    OtherTowerFound = Tower;
+                    Found = true;
+                }
+            
             }
         }
-        return closest;
-    }
-
-    public void WallRotation()
-    {
 
     }
 

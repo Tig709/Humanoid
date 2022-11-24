@@ -72,6 +72,8 @@ public class Malfunction : MonoBehaviour
         }
         timeractive = true;
         CurrentTask.SetActive(false);
+
+        GetComponentInParent<TurretHandler>().TurretSelector.enabled = true;
     }
 
     public void FailedCheck()

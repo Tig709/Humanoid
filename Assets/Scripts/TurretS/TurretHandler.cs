@@ -9,11 +9,18 @@ public class TurretHandler : MonoBehaviour
 
     public Camera Camera;
 
+    public GridManager gridmanager;
+
 
     public GameObject ManualTurret;
     public GameObject AutomaticTurret;
+
     public GameObject BarrierTurret;
+    public GameObject WallPrefab;
+
     public List<GameObject> TurretList;
+    public List<GameObject> BarrierList;
+    public List<GameObject> Walls;
 
     public Canvas TurretSelector;
     public Image Box0, Box1, Box2;
@@ -50,72 +57,97 @@ public class TurretHandler : MonoBehaviour
                 return BarrierTurret;
         }
         return null;
-
     }
 
     public void PlaceTurret(Vector3 position, TurretTypes type)
     {
-        GameObject Turret = Instantiate(SelectTurret(type), position, Quaternion.identity);
+        Vector3 turretposition = gridmanager.GetNearestPointOnGrid(position);
+        turretposition.y = 0;
+
+        GameObject Turret = Instantiate(SelectTurret(type), turretposition, Quaternion.identity);
         Turret.transform.SetParent(this.transform);
-        TurretList.Add(Turret);
+
+        if (type == TurretTypes.Automatic || type == TurretTypes.Manual)
+        {
+            Turret.transform.LookAt(gridmanager.getClosestPathTile(turretposition).transform);
+            TurretList.Add(Turret);
+        }
+        else
+        {
+            BarrierList.Add(Turret);
+        }
     }
 
     private void Update()
     {
         updateSelector();
+        MakeForcefields();
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            foreach (GameObject turret in TurretList)
+            if (gridmanager.CheckValidPosition((TurretHandler.TurretTypes)CurrentTurret, Player.transform.position))
             {
-                if (turret.GetComponent<TurretScript>() != null)
+                Vector3 placeposition = new Vector3(Player.transform.position.x, 0, Player.transform.position.z);
+                PlaceTurret(placeposition, (TurretHandler.TurretTypes)CurrentTurret);
+            }
+            else
+            {
+                if (TurretList.Count != 0)
                 {
-                if (turret.GetComponent<TurretScript>().used)
-                {
-                    TurretPlayer(true,turret);
-                }
-                else
-                {
-                    if (Vector3.Distance(Player.transform.position, turret.transform.position) <= Range)
+                    foreach (GameObject turret in TurretList)
                     {
-                        if (!turret.GetComponent<TurretScript>().broken)
+                        if (turret.GetComponent<TurretScript>() != null)
                         {
-                            if (Camera.enabled)
+                            if (turret.GetComponent<TurretScript>().used)
                             {
-                                TurretPlayer(false, turret);
+                                TurretPlayer(true, turret);
                             }
                             else
                             {
+                                if (Vector3.Distance(Player.transform.position, turret.transform.position) <= Range)
+                                {
+                                    if (!turret.GetComponent<TurretScript>().broken)
+                                    {
 
-                                TurretPlayer(true, turret);
+                                        if (Camera.enabled)
+                                        {
+                                            TurretPlayer(false, turret);
+                                        }
+                                        else
+                                        {
+                                            TurretPlayer(true, turret);
+                                        }
+                                    }
+                                    else if (turret.GetComponent<TurretScript>().broken)
+                                    {
+                                        //getmouse = false;
+                                        TurretSelector.enabled = false;
+                                        turret.GetComponent<Malfunction>().CurrentTask.SetActive(true);
+                                        Cursor.lockState = CursorLockMode.Confined;
+
+                                    }
+                                }
                             }
                         }
-                        else if (turret.GetComponent<TurretScript>().broken)
+                        else
                         {
-                            //getmouse = false;
-                            TurretSelector.enabled = false;
-                            turret.GetComponent<Malfunction>().CurrentTask.SetActive(true);
-                            Cursor.lockState = CursorLockMode.Confined;
-                        }
-                    }
-                }
-                }
-                else
-                {
-                    if (Vector3.Distance(Player.transform.position, turret.transform.position) <= Range)
-                    {
-                        if (turret.GetComponentInChildren<TurretAttackScript>().broken)
-                        {
-                            //getmouse = false;
-                            TurretSelector.enabled = false;
-                            turret.GetComponent<Malfunction>().CurrentTask.SetActive(true);
-                            Cursor.lockState = CursorLockMode.Confined;
+                            if (Vector3.Distance(Player.transform.position, turret.transform.position) <= Range)
+                            {
+                                if (turret.GetComponentInChildren<TurretAttackScript>().broken)
+                                {
+                                    //getmouse = false;
+                                    TurretSelector.enabled = false;
+                                    turret.GetComponentInChildren<Malfunction>().CurrentTask.SetActive(true);
+                                    Cursor.lockState = CursorLockMode.Confined;
+
+                                }
+                            }
                         }
                     }
                 }
             }
-
         }
+
 
         if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
         {
@@ -124,14 +156,6 @@ public class TurretHandler : MonoBehaviour
         else if (Input.GetAxis("Mouse ScrollWheel") < 0f) // backwards
         {
             Spritewheel--;
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            
-            Vector3 placeposition = new Vector3(Player.transform.position.x, 0, Player.transform.position.z);
-            PlaceTurret(placeposition, (TurretHandler.TurretTypes)CurrentTurret);
         }
     }
 
@@ -144,6 +168,47 @@ public class TurretHandler : MonoBehaviour
 
     }
 
+
+    private void MakeForcefields()
+    {
+        foreach (var tower1 in BarrierList)
+        {
+            foreach (var tower2 in BarrierList)
+            {
+                if (tower1.transform.position == tower2.transform.position)
+                {
+                    continue;
+                }
+                else
+                {
+                    if (tower1.GetComponent<BarrierConnect>().OtherTowerFound == tower2)
+                    {
+                        if (!tower1.GetComponent<BarrierConnect>().WallMade && !tower2.GetComponent<BarrierConnect>().WallMade)
+                        {
+                            Vector3 Distance = tower2.transform.position - tower1.transform.position;
+
+                            Vector3 rotation = Vector3.zero;
+                            if (Distance.z != 0)
+                            {
+                                rotation = new Vector3(0, 90, 0);
+                            }
+
+                            Distance /= 2;
+
+                            Vector3 Position = tower1.transform.position + Distance;
+
+                            GameObject Wall = Instantiate(WallPrefab, Position, Quaternion.Euler(rotation.x, rotation.y, rotation.z));
+
+                            tower1.GetComponent<BarrierConnect>().WallMade = true;
+                            tower2.GetComponent<BarrierConnect>().WallMade = true;
+
+                        }
+                    }
+                }
+            }
+        }
+
+    }
 
     private void updateSelector()
     {
