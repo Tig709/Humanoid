@@ -10,7 +10,7 @@ public class ResourcePileManager : MonoBehaviour
     //canvas only on screen when player close
     //canvas always look at player so player always can read text
     //other text color
-    //player logic for barrier
+    //player logic for pile
 
     //current time used to count the cooldown
     [SerializeField]//serialized for debugging
@@ -66,8 +66,6 @@ public class ResourcePileManager : MonoBehaviour
 
     private void Update()
     {
-        
-
         if(hasCollision && Input.GetKeyDown(KeyCode.R))
         {
             Debug.Log("hasColl");
