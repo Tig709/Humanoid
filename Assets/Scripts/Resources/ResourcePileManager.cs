@@ -75,7 +75,6 @@ public class ResourcePileManager : MonoBehaviour
             isPileLevel0 = true;
             currentTime = 0;
             timePassed = 0;
-
         }
 
         if (isPileLevel0)
@@ -95,19 +94,24 @@ public class ResourcePileManager : MonoBehaviour
         }
     }
 
-    public void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag == "Player" )
+        print(other.gameObject.tag);
+        if (other.gameObject.tag == "Player")
         {
+            Debug.Log("enter");
             hasCollision = true;
+            resourceCanvas.gameObject.SetActive(true);
         }
     }
-
-    public void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        if(collision.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
+            Debug.Log("exit");
             hasCollision = false;
+            resourceCanvas.gameObject.SetActive(false);
         }
     }
 
@@ -131,7 +135,6 @@ public class ResourcePileManager : MonoBehaviour
             pileLevel++;
             Scrap.transform.position = activePosition;
             isPileLevel0 = false;
-            resourceCanvas.gameObject.SetActive(true);
         }
     }
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3450348155942142277}
   - component: {fileID: 8583365307083119206}
   - component: {fileID: 3640832556998448508}
+  - component: {fileID: 3819589019391171563}
   m_Layer: 0
   m_Name: ScrapResource
   m_TagString: Resource
@@ -117,6 +118,19 @@ MonoBehaviour:
   maxPileLevel: 5
   scaleFactor: 1.5
   resourceCanvas: {fileID: 5258686894486563414}
+--- !u!135 &3819589019391171563
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909025376808837599}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.7
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4631277040443692972
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,7 +155,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4631277040443692972}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 366.37643, y: -3.163796, z: 251.58208}
+  m_LocalPosition: {x: 366.37643, y: 0, z: 251.58208}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
