@@ -26,7 +26,7 @@ public class ResourcePileManager : MonoBehaviour
 
     //level is the amount of resources you get from the spot
     [SerializeField]//serialized for debugging
-    private int pileLevel = 0;
+    public int pileLevel = 0;
 
     //size when pile stops growing
     [SerializeField]

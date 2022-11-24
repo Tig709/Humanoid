@@ -175,8 +175,9 @@ GameObject:
   - component: {fileID: 5530821209744355508}
   - component: {fileID: 3136290898262931853}
   - component: {fileID: 6731300425603596130}
+  - component: {fileID: 7522521087652739576}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: ResourceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -299,6 +300,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7522521087652739576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7520345657134438817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 008d715146ef5fc4fb80737dcbfefe59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMeshPro: {fileID: 6731300425603596130}
+  resourcePileManager: {fileID: 3640832556998448508}
 --- !u!1 &7921034710589830929
 GameObject:
   m_ObjectHideFlags: 0
